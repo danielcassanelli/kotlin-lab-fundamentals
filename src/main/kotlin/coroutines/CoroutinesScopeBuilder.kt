@@ -27,12 +27,22 @@ fun main() = runBlocking {
 suspend fun doScopeWorld() = coroutineScope {  // this: CoroutineScope
     launch {
         delay(2000L)
-        println("World 2")
+        print("World 2")
     }
     launch {
         delay(1000L)
-        println("World 1")
+        print("World 1")
+    }
+    launch {
+        printDots() // infinite dot printing
     }
     println("Hello")
+}
+
+suspend fun printDots() = coroutineScope {
+    while (true) {
+        print(".")
+        delay(250)
+    }
 }
 
