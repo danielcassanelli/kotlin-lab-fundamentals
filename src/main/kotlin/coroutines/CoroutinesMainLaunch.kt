@@ -4,19 +4,25 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
+
 fun main() = runBlocking { // this: CoroutineScope
+
+    val numberInteger = 0
+    val numberDecimal = 0.0
+
     launch {
-        doWorld()
+        doWorld(numberInteger)
+        doWorld(numberDecimal)
     }.also {
-        println("Also block: ${it.isActive}")
+        println("Also: ${it.isActive}")
     }.run {
-        println("Run block: $isActive")
+        println("Run: $isActive")
     }
-    println("Hello")
+    println("End")
 }
 
 // this is your first suspending function
-suspend fun doWorld() {
+suspend fun doWorld(number: Number) {
     delay(1000L)
-    println("World!")
+    println(number)
 }
