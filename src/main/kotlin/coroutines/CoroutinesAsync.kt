@@ -1,8 +1,6 @@
 package coroutines
 
 import kotlinx.coroutines.*
-import kotlinx.coroutines.guide.exampleCompose01.doSomethingUsefulOne
-import kotlinx.coroutines.guide.exampleCompose01.doSomethingUsefulTwo
 import kotlin.system.measureTimeMillis
 
 
@@ -41,4 +39,12 @@ suspend fun concurrentSum(): Int = coroutineScope {
     val one = async { doSomethingUsefulOne() }
     val two = async { doSomethingUsefulTwo() }
     one.await() + two.await()
+}
+
+suspend fun doSomethingUsefulOne(): Int {
+    return 1
+}
+
+suspend fun doSomethingUsefulTwo(): Int {
+    return 2
 }
