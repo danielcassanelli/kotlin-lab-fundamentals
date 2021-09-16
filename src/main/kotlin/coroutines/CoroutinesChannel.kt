@@ -6,12 +6,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking {
-
-    val numberForProcess = 10
-
-    runChannel(numberForProcess).apply {
-        repeat(numberForProcess) {
-            prt(receive())
+    10.let {
+        runChannel(it).apply {
+            repeat(it) {
+                prt(receive())
+            }
         }
     }
     prt("Done!")
